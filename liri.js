@@ -35,3 +35,9 @@ switch (action) {
 		random();
 		break;
 };
+
+//functions
+
+function concert() {
+    
+}
