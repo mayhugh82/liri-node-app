@@ -104,5 +104,19 @@ var spotify = new Spotify({
         console.log("Song: " + songResponse.tracks.items[0].name);
         console.log("URL: " + songResponse.tracks.items[0].preview_url);
         console.log("Album: " + songResponse.tracks.items[0].album.name);
-    });
+	});
+	
+	var queryURL =
+    "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=[key]";
+
+  axios.get(queryURL).then(function (movieResponse) {
+    console.log("Title: " + movieResponse.data.Title);
+    console.log("Year: " + movieResponse.data.Year);
+    console.log("Rated: " + movieResponse.data.imdbRating);
+    console.log("Country: " + movieResponse.data.Country);
+    console.log("Language: " + movieResponse.data.Language);
+    console.log("Plot: " + movieResponse.data.Plot);
+    console.log("Actors: " + movieResponse.data.Actors);
+    console.log("Rotten Tomatoes: " + movieResponse.data.Ratings[1].Value);
+  });
 
