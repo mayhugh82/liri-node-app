@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 console.log(
-  " \n Hi, I'm Liri! What do you want to do today? \n Choose from the following: 'my-tweets', 'movie-this', 'spotify-this-song' or 'do-what-it-says'"
+  " \n Hi, I'm Liri! What do you want to do today? \n Choose from the following: 'concert-this', 'movie-this', 'spotify-this-song' or 'do-what-it-says'"
 );
 
 var keys = require("./keys.js");
@@ -20,24 +20,43 @@ console.log("Command chosen: " + action);
 switch (action) {
 
     case "concert-this":
-        concert();
+        bandInfo();
         break;
 
 	case "spotify-this-song":
-		song();
+		songInfo();
 		break;
 
 	case "movie-this":
-		movie();
+		movieInfo();
 		break;
 
 	case "do-what-it-says":
-		random();
+		doWhatInfo();
 		break;
 };
 
 //functions
 
-function concert() {
-    
+function bandInfo() {
+	var bandName = "";
+	for (var i = 3; i < userInput.length; i++){
+		if (i > 3 && i < userInput.length){
+			bandName = bandName + "+" + userInput[i];
+		} else {
+			bandName += userInput[i];
+		}
+	}
+}
+
+function songInfo() {
+
+}
+
+function movieInfo() {
+
+}
+
+function doWhatInfo() {
+
 }
