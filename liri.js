@@ -7,14 +7,10 @@ var axios = require("axios");
 var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
-console.log(
-  " \n Hi, I'm Liri! What do you want to do today? \n Choose from the following: 'concert-this', 'movie-this', 'spotify-this-song' or 'do-what-it-says'"
-);
 
 //Arguments provided
-var action = process.argv[2];
-var input = process.argv[3];
-var nodeArgs = process.argv;
+var userInput = process.argv;
+var inputTopic = process.argv[2];
 
 console.log("Command chosen: " + action);
 
