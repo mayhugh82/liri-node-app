@@ -2,13 +2,11 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-//var spotify = new Spotify(keys.spotify);
+var Spotify = require("node-spotify-api");
 
 var fs = require("fs");
 var moment = require("moment");
 var axios = require("axios");
-
-
 
 //Arguments provided
 var userInput = process.argv;
@@ -38,8 +36,7 @@ switch (action) {
 //functions
 
 function bandInfo() {
-
-	var artist = "";
+  var artist = "";
   for (var i = 3; i < userInput.length; i++) {
     if (i > 3 && i < userInput.length) {
       artist = artist + "+" + userInput[i];
@@ -48,39 +45,43 @@ function bandInfo() {
     }
   }
 
-	var queryURL =
-    "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+  var queryURL =
+    "https://rest.bandsintown.com/artists/" +
+    artist +
+    "/events?app_id=codingbootcamp";
 
   console.log(queryURL);
 
-  axios.get(queryURL).then(function (bandResponse) {
-    console.log("Venue: " + bandResponse.data[0].venue.name);
-    console.log("City: " + bandResponse.data[0].venue.city);
-    console.log(moment(bandResponse.data[0].datetime).format("MM/DD/YYYY"));
-  })
-  .catch(function (error) {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                console.log("---------------Data---------------");
-                console.log(error.response.data);
-                console.log("---------------Status---------------");
-                console.log(error.response.status);
-                console.log("---------------Status---------------");
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                // `error.request` is an object that comes back with details pertaining to the error that occurred.
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log("Error", error.message);
-            }
-            console.log(error.config);
-        });
+  axios
+    .get(queryURL)
+    .then(function (bandResponse) {
+      console.log("Venue: " + bandResponse.data[0].venue.name);
+      console.log("City: " + bandResponse.data[0].venue.city);
+      console.log(moment(bandResponse.data[0].datetime).format("MM/DD/YYYY"));
+    })
+    .catch(function (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log("---------------Data---------------");
+        console.log(error.response.data);
+        console.log("---------------Status---------------");
+        console.log(error.response.status);
+        console.log("---------------Status---------------");
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an object that comes back with details pertaining to the error that occurred.
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
 }
 
-function songInfo() {
+function songInfo(input) {
   var songName = "";
   for (var i = 3; i < userInput.length; i++) {
     if (i > 3 && i < userInput.length) {
@@ -89,11 +90,12 @@ function songInfo() {
       songName += userInput[i];
     }
   }
-  var spotify = new Spotify({
-    id: spotifyKeyInfo["spotify"].id,
-    secret: spotifyKeyInfo["spotify"].secret,
-  });
-
+  if (songName === "") {
+    songName = "The Sign by Ace of Base";
+  } else if (input) {
+    songName = input;
+  }
+  var spotify = new Spotify(keys.spotify);
   spotify.request(
     "https://api.spotify.com/v1/search?q=track:" +
       songName +
@@ -119,8 +121,11 @@ function movieInfo() {
       movieName += userInput[i];
     }
   }
+  if (movieName === "") {
+    movieName = "Mr. Nobody";
+  }
   var queryURL =
-    "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=[key]";
+    "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
   axios.get(queryURL).then(function (movieResponse) {
     console.log("Title: " + movieResponse.data.Title);
@@ -139,15 +144,17 @@ function doWhatInfo() {
     if (error) {
       return console.log(error);
     }
+    console.log(data);
     var output = data.split(",");
-    for (var i = 0; i < output.length; i++) {
-      console.log(output[i]);
+    var command = output[0];
+    var input = output[1];
+    console.log(command);
+    console.log(input);
+    if (command === "spotify-this") {
+      songInfo(input);
     }
+    // for (var i = 0; i < output.length; i++) {
+    //   console.log(output[i]);
+    // }
   });
 }
-
-
-
-
-
-
