@@ -123,6 +123,8 @@ function movieInfo() {
   }
   if (movieName === "") {
     movieName = "Mr. Nobody";
+  } else if (input) {
+    movieName = input;
   }
   var queryURL =
     "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
@@ -152,9 +154,12 @@ function doWhatInfo() {
     console.log(input);
     if (command === "spotify-this") {
       songInfo(input);
-    }
-    // for (var i = 0; i < output.length; i++) {
-    //   console.log(output[i]);
-    // }
+	}
+	if (command === "movie-this") {
+    movieInfo(input);
+  }
+  if (command === "concert-this") {
+    bandInfo(input);
+  }
   });
 }
