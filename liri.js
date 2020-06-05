@@ -123,8 +123,6 @@ function movieInfo() {
   }
   if (movieName === "") {
     movieName = "Mr. Nobody";
-  } else if (input) {
-    movieName = input;
   }
   var queryURL =
     "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
