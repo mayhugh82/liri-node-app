@@ -62,8 +62,8 @@ Each command produced different search results as listed below:
 
 ## Screen Shots of App Functioning
 
-![concert-this](/images/logo.png)
-Format: ![Alt Text](url)
+![concert-this](/images/concert.PNG)
+
 
 ## Link to Deployed Version
 
