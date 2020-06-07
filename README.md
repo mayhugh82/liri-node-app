@@ -60,6 +60,17 @@ Each command produced different search results as listed below:
 * node liri.js do-what-it-says
     * Print the spotify results for “I want it that way” stored in the random.txt file
 
+## Screen Shots of App Functioning
+
+![concert-this](/images/logo.png)
+Format: ![Alt Text](url)
+
+## Link to Deployed Version
+
+## Technologies Used
+
+## Author
+
 
 
 
