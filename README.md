@@ -89,9 +89,15 @@ do-what-it-says
 
 ## Link to Deployed Version
 
+[liri-node-app](https://github.com/mayhugh82/liri-node-app)
+
 ## Technologies Used
+* javaScript
+* API
+* Node js
 
 ## Author
+* **Diana Mayhugh**
 
 
 
