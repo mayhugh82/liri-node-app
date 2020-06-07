@@ -63,21 +63,27 @@ Each command produced different search results as listed below:
 ## Screen Shots of App Functioning
 
 concert-this
+
 ![concert-this](/images/concert.PNG)
 
 spotify-this-song
+
 ![spotify-this-song](/images/song.PNG)
 
 spotify-this-song  No Song Given
+
 ![spotify-this-song-no-song-given](/images/no-song-given.PNG)
 
 movie-this
+
 ![movie-this](/images/movie.PNG)
 
 movie-this  No Movie Given
+
 ![move-this-no-movie-given](/images/no-movie-given.PNG)
 
 do-what-it-says
+
 ![do-what-it-says](/images/do-what-it-says.PNG)
 
 
